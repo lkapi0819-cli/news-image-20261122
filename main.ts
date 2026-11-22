@@ -23,6 +23,14 @@ const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 const poster = readFileSync(new URL('./entry.png', import.meta.url));
 const target = join(outDir, 'entry.png');
 
+// The poster packs 27 stories (1 lead, 6 illustrated cards, 16 briefs and
+// a 5-item ticker counting as 4 further stories plus the masthead date
+// line); an empty or truncated file can never be that front page, so
+// refuse anything implausibly small before the format checks below.
+if (poster.length < 10_000) {
+  throw new Error(`entry.png is only ${poster.length} bytes: too small to be the poster`);
+}
+
 // Refuse to ship anything the sealed gate would mark invalid: the file
 // must be a whole PNG or JPEG and at most 1 MiB.
 const pngMagic = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a];
