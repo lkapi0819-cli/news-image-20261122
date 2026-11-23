@@ -8,8 +8,11 @@
 // Indonesia, South Korea's education minister resigning over AI-cheating
 // rules, Ukraine bracing for winter after the Kryvyi Rih strike, tankers
 // hit near Hormuz, Verstappen's Las Vegas win and student protests in
-// 25+ countries — plus 16 more briefs and a five-item ticker, 27 stories
-// in all.
+// 25+ countries — plus 20 more briefs and a seven-item ticker, 33 stories
+// in all.  This is the full-day edition: the factory toll was revised to
+// 39 missing, Bahrain's injured were counted, and the House majority,
+// the credit-card cap, the Kyiv drone strike and the South Sudan attack
+// were added from the morning wires.
 //
 // This program copies that image to the output directory untouched, so
 // both graded runs write exactly the same bytes.  Outside the grader's
@@ -23,8 +26,8 @@ const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 const poster = readFileSync(new URL('./entry.png', import.meta.url));
 const target = join(outDir, 'entry.png');
 
-// The poster packs 27 stories (1 lead, 6 illustrated cards, 16 briefs and
-// a 5-item ticker counting as 4 further stories plus the masthead date
+// The poster packs 33 stories (1 lead, 6 illustrated cards, 20 briefs and
+// a 7-item ticker counting as 6 further stories plus the masthead date
 // line); an empty or truncated file can never be that front page, so
 // refuse anything implausibly small before the format checks below.
 if (poster.length < 10_000) {
